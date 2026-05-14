@@ -4,8 +4,16 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import pymysql
 import requests
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 开发阶段先用 *
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # ========== 配置 ==========
 DEEPSEEK_API_KEY = "sk-5d3f121f6f3a44a39c22d44a7045f8e7"
