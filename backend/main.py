@@ -16,7 +16,7 @@ app.add_middleware(
 )
 
 # ========== 配置 ==========
-DEEPSEEK_API_KEY = "sk-5d3f121f6f3a44a39c22d44a7045f8e7"
+DEEPSEEK_API_KEY = "sk-8098107421df4fd5a2f7eebec0d3985f"
 
 def get_conn():
     return pymysql.connect(
