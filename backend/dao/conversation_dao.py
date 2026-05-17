@@ -1,6 +1,23 @@
 from dao.db import get_conn
 
 
+def create_conversation(user_id, title):
+    conn = get_conn()
+    cursor = conn.cursor()
+
+    sql = """
+    INSERT INTO conversations (user_id, title)
+    VALUES (%s, %s)
+    """
+
+    cursor.execute(sql, (user_id, title))
+    conn.commit()
+    conversation_id = cursor.lastrowid
+    conn.close()
+
+    return conversation_id
+
+
 def get_conversations(user_id):
     conn = get_conn()
     cursor = conn.cursor()

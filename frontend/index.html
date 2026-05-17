@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- 左侧栏 -->
+    <div class="sidebar">
+
+        <button id="new-chat-btn">
+            + 新对话
+        </button>
+
+        <div id="conversation-list">
+
+        </div>
+
+    </div>
+
+    <!-- 右侧聊天区 -->
+    <div class="chat-area">
+
+        <div id="chat-box"></div>
+
+        <div class="input-area">
+            <input
+                type="text"
+                id="message-input"
+                placeholder="输入消息..."
+            />
+
+            <button onclick="sendMessage()">
+                发送
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

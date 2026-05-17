@@ -1,29 +1,3 @@
-# AI Chat System
-
-一个 FastAPI + MySQL + 原生前端的简单 AI 聊天项目。
-
-## 环境变量
-
-在项目根目录创建 `.env`：
-
-```env
-DEEPSEEK_API_KEY=你的 DeepSeek API Key
-MYSQL_HOST=localhost
-MYSQL_PORT=3306
-MYSQL_USER=root
-MYSQL_PASSWORD=你的 MySQL 密码
-MYSQL_DATABASE=chat_db
-```
-
-## 安装依赖
-
-```bash
-pip install -r requirements.txt
-```
-
-## 数据库表
-
-```sql
 CREATE DATABASE IF NOT EXISTS chat_db DEFAULT CHARACTER SET utf8mb4;
 USE chat_db;
 
@@ -43,15 +17,3 @@ CREATE TABLE IF NOT EXISTS messages (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     INDEX idx_messages_conversation_id (conversation_id)
 );
-```
-
-同样的建表脚本也放在 `docs/schema.sql`。
-
-## 启动后端
-
-```bash
-cd backend
-uvicorn main:app --reload
-```
-
-然后用浏览器打开 `frontend/index.html`。
