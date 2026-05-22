@@ -4,3 +4,4 @@ pymysql
 requests
 python-dotenv
 cryptography
+pypdf

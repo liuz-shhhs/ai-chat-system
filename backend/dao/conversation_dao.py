@@ -38,3 +38,34 @@ def get_conversations(user_id):
         {"id": r[0], "title": r[1], "created_at": str(r[2])}
         for r in rows
     ]
+
+
+def delete_conversation(user_id, conversation_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute(
+            """
+            DELETE FROM messages
+            WHERE user_id = %s AND conversation_id = %s
+            """,
+            (user_id, conversation_id),
+        )
+
+        cursor.execute(
+            """
+            DELETE FROM conversations
+            WHERE user_id = %s AND id = %s
+            """,
+            (user_id, conversation_id),
+        )
+
+        deleted = cursor.rowcount
+        conn.commit()
+        return deleted > 0
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()

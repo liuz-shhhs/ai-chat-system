@@ -1,49 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Chat</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="app-shell">
+    <aside class="sidebar" aria-label="会话导航">
+        <div class="brand">
+            <div class="brand-mark" aria-hidden="true">AI</div>
+            <div>
+                <p class="brand-kicker">Chat Studio</p>
+                <h1>AI Chat</h1>
+            </div>
+        </div>
 
-<div class="app">
-
-    <!-- 左侧栏 -->
-    <div class="sidebar">
-
-        <button id="new-chat-btn">
-            + 新对话
+        <button id="new-chat-btn" type="button">
+            <span class="button-icon" aria-hidden="true">+</span>
+            <span>新对话</span>
         </button>
 
-        <div id="conversation-list">
-
+        <div class="sidebar-section document-section">
+            <div class="section-heading">
+                <span>文档库</span>
+                <span id="document-count">0</span>
+            </div>
+            <input
+                class="visually-hidden"
+                id="document-input"
+                type="file"
+                accept=".txt,.md,.markdown,.csv,.docx,.pdf"
+            />
+            <button id="upload-document-btn" class="secondary-action" type="button">
+                上传文档
+            </button>
+            <div id="document-list" aria-live="polite"></div>
         </div>
 
-    </div>
+        <div class="sidebar-section conversation-section">
+            <div class="section-heading">
+                <span>最近会话</span>
+                <span id="conversation-count">0</span>
+            </div>
+            <div id="conversation-list" aria-live="polite"></div>
+        </div>
 
-    <!-- 右侧聊天区 -->
-    <div class="chat-area">
+        <div class="sidebar-footer">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span id="status-text">准备就绪</span>
+        </div>
+    </aside>
 
-        <div id="chat-box"></div>
+    <main class="chat-area">
+        <header class="chat-header">
+            <div>
+                <p class="header-kicker">AI 助手</p>
+                <h2 id="active-title">新的灵感从这里开始</h2>
+            </div>
+            <div class="header-badge" id="active-meta">本地工作区</div>
+        </header>
+
+        <section id="chat-box" aria-live="polite"></section>
 
         <div class="input-area">
-            <input
-                type="text"
-                id="message-input"
-                placeholder="输入消息..."
-            />
-
-            <button onclick="sendMessage()">
-                发送
-            </button>
+            <div class="composer">
+                <textarea
+                    id="message-input"
+                    rows="1"
+                    placeholder="说点什么..."
+                ></textarea>
+                <button id="send-button" type="button" title="发送" aria-label="发送消息">
+                    <span aria-hidden="true">↑</span>
+                </button>
+            </div>
         </div>
-
-    </div>
-
+    </main>
 </div>
 
 <script src="app.js"></script>
-
 </body>
 </html>
